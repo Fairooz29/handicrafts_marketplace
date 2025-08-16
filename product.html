@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nakshi Kantha Embroidery | Crafts of Bengal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/auth-check.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/favorites.js" defer></script>
+</head>
+<body>
+  <div class="main-container">
+    <div class="page-card">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-title">
+          <div class="logo-icon"></div>
+          <h2 class="site-title">Crafts of Bengal</h2>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="handicrafts.html">Shop</a>
+          <a href="artisans.html">Artisans</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <form class="search-bar" action="handicrafts.html" method="get">
+            <input type="text" name="search" placeholder="Search" aria-label="Search for handicrafts, artisans, or categories" />
+            <button type="submit" aria-label="Search">
+              <span class="icon-search"></span>
+            </button>
+          </form>
+          <a href="favorites.html" class="icon-btn" aria-label="Favorites">
+            <span class="icon-heart"></span>
+          </a>
+          <a href="cart.html" class="icon-btn" aria-label="Cart">
+            <span class="icon-cart"></span>
+          </a>
+        </div>
+
+      </header>
+
+      <!-- Main Content -->
+      <main style="flex:1;">
+        <section id="product-details" style="max-width:900px;margin:0 auto;padding:2rem 0;">
+          <!-- Breadcrumb -->
+          <nav style="font-size:0.98rem;color:#8a7c6d;margin-bottom:1.5rem;">
+            <a href="index.html" style="color:#8a7c6d;">Home</a> /
+            <a href="handicrafts.html" style="color:#8a7c6d;">Shop</a> /
+            <span id="breadcrumb-product" style="color:#181411;font-weight:500;">Product</span>
+          </nav>
+
+          <!-- Loading indicator -->
+          <div id="loading-indicator" style="text-align:center;padding:3rem;display:block;">
+            <div style="font-size:1.1rem;color:#8a7c6d;">Loading product...</div>
+          </div>
+
+          <!-- Product content -->
+          <div id="product-content" style="display:none;">
+            <!-- Product header -->
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+              <h1 class="section-title" id="product-title" style="margin:0;flex:1;">Product Name</h1>
+              <button class="favorite-btn product-favorite-btn" data-product-id="" aria-label="Add to favorites" style="position:relative;">
+                <span class="icon-heart"></span>
+              </button>
+            </div>
+            
+            <!-- Product image -->
+            <div style="text-align:center;margin-bottom:2rem;">
+              <img id="product-image" src="" alt="Product Image" style="width:100%;max-width:600px;border-radius:1.1rem;box-shadow:0 2px 12px rgba(0,0,0,0.07);" />
+            </div>
+
+            <!-- Product info -->
+            <div style="display:grid;grid-template-columns:1fr 300px;gap:3rem;margin-bottom:2rem;" class="product-info-grid">
+              <!-- Left column - Details -->
+              <div>
+                <!-- Price -->
+                <div id="product-price-section" style="margin-bottom:2rem;">
+                  <div class="product-price">
+                    <span id="product-price" class="current-price">৳0</span>
+                    <span id="product-original-price" class="original-price" style="display:none;">৳0</span>
+                    <span id="product-discount" class="discount" style="display:none;">0% OFF</span>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <section style="margin-bottom:2rem;">
+                  <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:1rem;color:#2c2c2c;">Description</h2>
+                  <p id="product-description" style="font-size:1.01rem;line-height:1.7;color:#555;">Product description...</p>
+                </section>
+
+                <!-- Artisan info -->
+                <section style="margin-bottom:2rem;">
+                  <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:#2c2c2c;">About the Artisan</h3>
+                  <div style="display:flex;gap:1rem;align-items:flex-start;">
+                    <img id="artisan-image" src="" alt="Artisan" style="width:60px;height:60px;border-radius:50%;object-fit:cover;display:none;">
+                    <div>
+                      <h4 id="artisan-name" style="font-weight:600;color:#8a7c6d;margin-bottom:0.5rem;">Artisan Name</h4>
+                      <p id="artisan-bio" style="font-size:0.9rem;color:#666;line-height:1.5;">Artisan bio...</p>
+                      <div style="margin-top:0.5rem;">
+                        <span id="artisan-location" style="font-size:0.85rem;color:#999;"></span>
+                        <span id="artisan-speciality" style="font-size:0.85rem;color:#999;margin-left:1rem;"></span>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <!-- Right column - Actions -->
+              <div class="product-actions" style="background:#f8f9fa;padding:2rem;border-radius:1rem;height:fit-content;">
+                <div style="margin-bottom:1.5rem;">
+                  <div id="stock-status" style="font-size:0.9rem;color:#27ae60;margin-bottom:1rem;">✓ In Stock</div>
+                  
+                  <!-- Quantity selector -->
+                  <div style="margin-bottom:1.5rem;">
+                    <label style="display:block;font-weight:600;margin-bottom:0.5rem;color:#2c2c2c;">Quantity:</label>
+                    <div style="display:flex;align-items:center;gap:0.5rem;">
+                      <button id="qty-minus" style="width:36px;height:36px;border:1px solid #ddd;background:#fff;border-radius:0.5rem;cursor:pointer;">-</button>
+                      <input type="number" id="quantity" value="1" min="1" max="10" style="width:60px;height:36px;text-align:center;border:1px solid #ddd;border-radius:0.5rem;">
+                      <button id="qty-plus" style="width:36px;height:36px;border:1px solid #ddd;background:#fff;border-radius:0.5rem;cursor:pointer;">+</button>
+                    </div>
+                  </div>
+
+                  <!-- Add to cart button -->
+                  <button id="add-to-cart-btn" class="hero-button" style="width:100%;padding:1rem;font-size:1.1rem;margin-bottom:1rem;" data-product-id="">
+                    Add to Cart
+                  </button>
+
+                  <!-- Buy now button -->
+                  <button id="buy-now-btn" style="width:100%;padding:1rem;background:#2c2c2c;color:white;border:none;border-radius:0.75rem;font-size:1rem;cursor:pointer;">
+                    Buy Now
+                  </button>
+                </div>
+
+                <!-- Product meta -->
+                <div style="border-top:1px solid #e0e0e0;padding-top:1rem;font-size:0.9rem;color:#666;">
+                  <div style="margin-bottom:0.5rem;">Category: <span id="product-category">-</span></div>
+                  <div>Stock: <span id="product-stock">-</span> available</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error message -->
+          <div id="error-message" style="text-align:center;padding:3rem;display:none;">
+            <h3 style="color:#e74c3c;margin-bottom:1rem;">Product not found</h3>
+            <p style="color:#666;margin-bottom:2rem;">The product you're looking for doesn't exist or has been removed.</p>
+            <a href="handicrafts.html" class="hero-button">Browse Products</a>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <nav class="footer-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+        <div class="footer-social">
+          <a href="#"><span class="icon-twitter"></span></a>
+          <a href="#"><span class="icon-facebook"></span></a>
+          <a href="#"><span class="icon-instagram"></span></a>
+        </div>
+        <p class="footer-text">@2024 Crafts of Bengal. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Session simulation for demo
+    if (!localStorage.getItem('user_session')) {
+      localStorage.setItem('user_session', JSON.stringify({
+        id: 1,
+        name: 'John Doe',
+        email: 'john@example.com'
+      }));
+    }
+
+    // Enhanced product page functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeEnhancedProductPage();
+    });
+
+    async function initializeEnhancedProductPage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      
+      if (!productId) {
+        showErrorMessage();
+        return;
+      }
+
+      try {
+        const response = await fetch(`api/products.php?action=single&id=${productId}`);
+        const data = await response.json();
+
+        if (data.success && data.product) {
+          displayEnhancedProduct(data.product);
+          bindEnhancedProductEvents(data.product);
+        } else {
+          showErrorMessage();
+        }
+      } catch (error) {
+        console.error('Error loading product:', error);
+        showErrorMessage();
+      }
+    }
+
+    function displayEnhancedProduct(product) {
+      // Hide loading, show content
+      document.getElementById('loading-indicator').style.display = 'none';
+      document.getElementById('product-content').style.display = 'block';
+
+      // Update page title
+      document.title = `${product.name} | Crafts of Bengal`;
+
+      // Update elements
+      document.getElementById('product-title').textContent = product.name;
+      document.getElementById('breadcrumb-product').textContent = product.name;
+      document.getElementById('product-description').textContent = product.description;
+      document.getElementById('product-category').textContent = product.category_name || 'Handicrafts';
+      document.getElementById('product-stock').textContent = product.stock_quantity || 0;
+      
+      // Set product ID for add to cart button
+      document.getElementById('add-to-cart-btn').dataset.productId = product.id;
+
+      // Update image
+      const productImage = document.getElementById('product-image');
+      productImage.src = product.image;
+      productImage.alt = product.name;
+
+      // Update price
+      const priceEl = document.getElementById('product-price');
+      priceEl.textContent = `৳${parseFloat(product.price).toLocaleString()}`;
+
+      if (product.original_price && product.original_price > product.price) {
+        const originalPriceEl = document.getElementById('product-original-price');
+        const discountEl = document.getElementById('product-discount');
+        
+        originalPriceEl.textContent = `৳${parseFloat(product.original_price).toLocaleString()}`;
+        originalPriceEl.style.display = 'inline';
+        
+        const discount = Math.round(((product.original_price - product.price) / product.original_price) * 100);
+        discountEl.textContent = `${discount}% OFF`;
+        discountEl.style.display = 'inline';
+      }
+
+      // Update artisan info
+      if (product.artisan_name) {
+        document.getElementById('artisan-name').textContent = product.artisan_name;
+        document.getElementById('artisan-bio').textContent = product.artisan_bio || 'Skilled artisan preserving traditional crafts.';
+        document.getElementById('artisan-location').textContent = product.artisan_location || '';
+        document.getElementById('artisan-speciality').textContent = product.artisan_speciality || '';
+        
+        if (product.artisan_image) {
+          const artisanImg = document.getElementById('artisan-image');
+          artisanImg.src = product.artisan_image;
+          artisanImg.style.display = 'block';
+        }
+      }
+
+      // Update stock status
+      const stockStatus = document.getElementById('stock-status');
+      const addToCartBtn = document.getElementById('add-to-cart-btn');
+      const qtyInput = document.getElementById('quantity');
+      
+      if (product.stock_quantity > 0) {
+        stockStatus.innerHTML = '✓ In Stock';
+        stockStatus.style.color = '#27ae60';
+        qtyInput.max = product.stock_quantity;
+      } else {
+        stockStatus.innerHTML = '✗ Out of Stock';
+        stockStatus.style.color = '#e74c3c';
+        addToCartBtn.disabled = true;
+        addToCartBtn.textContent = 'Out of Stock';
+        addToCartBtn.style.opacity = '0.6';
+        qtyInput.disabled = true;
+      }
+
+      // Set favorite button product ID
+      document.querySelector('.product-favorite-btn').dataset.productId = product.id;
+    }
+
+    function bindEnhancedProductEvents(product) {
+      // Quantity controls
+      const qtyMinus = document.getElementById('qty-minus');
+      const qtyPlus = document.getElementById('qty-plus');
+      const qtyInput = document.getElementById('quantity');
+
+      qtyMinus.addEventListener('click', () => {
+        const current = parseInt(qtyInput.value);
+        if (current > 1) {
+          qtyInput.value = current - 1;
+        }
+      });
+
+      qtyPlus.addEventListener('click', () => {
+        const current = parseInt(qtyInput.value);
+        const max = parseInt(qtyInput.max);
+        if (current < max) {
+          qtyInput.value = current + 1;
+        }
+      });
+
+      // Add to cart button is handled by cart.js
+
+      // Buy now
+      const buyNowBtn = document.getElementById('buy-now-btn');
+      buyNowBtn.addEventListener('click', async () => {
+        const quantity = parseInt(qtyInput.value);
+        const success = await HandicraftsCart.addToCart(product.id, quantity);
+        if (success) {
+          setTimeout(() => {
+            window.location.href = 'cart.html';
+          }, 1000);
+        }
+      });
+
+      // Favorite button
+      const favoriteBtn = document.querySelector('.product-favorite-btn');
+      favoriteBtn.addEventListener('click', () => {
+        HandicraftsApp.toggleFavorite(product.id, favoriteBtn);
+      });
+
+      // Load favorite status
+      loadFavoriteStatus(product.id, favoriteBtn);
+    }
+
+    async function loadFavoriteStatus(productId, buttonElement) {
+      try {
+        const response = await fetch(`api/favorites.php?action=check&product_id=${productId}`);
+        const data = await response.json();
+        
+        if (data.success && data.is_favorite) {
+          buttonElement.classList.add('active');
+        }
+      } catch (error) {
+        console.error('Error checking favorite status:', error);
+      }
+    }
+
+    function showErrorMessage() {
+      document.getElementById('loading-indicator').style.display = 'none';
+      document.getElementById('error-message').style.display = 'block';
+    }
+
+    // Responsive adjustments
+    function adjustForMobile() {
+      const productInfoGrid = document.querySelector('.product-info-grid');
+      if (window.innerWidth <= 768) {
+        productInfoGrid.style.gridTemplateColumns = '1fr';
+        productInfoGrid.style.gap = '2rem';
+      } else {
+        productInfoGrid.style.gridTemplateColumns = '1fr 300px';
+        productInfoGrid.style.gap = '3rem';
+      }
+    }
+
+    window.addEventListener('resize', adjustForMobile);
+    adjustForMobile();
+  </script>
+</body>
+</html> 

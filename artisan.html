@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatima Begum | Crafts of Bengal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="main-container">
+    <div class="page-card">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-title">
+          <div class="logo-icon"></div>
+          <h2 class="site-title">Crafts of Bengal</h2>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="handicrafts.html">Shop</a>
+          <a href="artisans.html">Artisans</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <form class="search-bar" action="handicrafts.html" method="get">
+            <input type="text" name="search" placeholder="Search" aria-label="Search for handicrafts, artisans, or categories" />
+            <button type="submit" aria-label="Search">
+              <span class="icon-search"></span>
+            </button>
+          </form>
+          <a href="favorites.html" class="icon-btn" aria-label="Favorites">
+            <span class="icon-heart"></span>
+          </a>
+          <a href="cart.html" class="icon-btn" aria-label="Cart">
+            <span class="icon-cart"></span>
+          </a>
+        </div>
+        <a href="profile.html" class="profile-avatar-link">
+          <img src="assets/images/profile.jpg" alt="Profile" class="profile-avatar" />
+        </a>
+      </header>
+
+      <!-- Main Content -->
+      <main class="artisan-main">
+        <div class="artisan-container">
+          <!-- Artisan Profile Section -->
+          <section class="artisan-profile">
+            <div class="artisan-header">
+              <div class="artisan-avatar">
+                <img id="artisan-image" src="assets/images/my_artisan_photo.jpg" alt="Fatima Begum" />
+              </div>
+              <div class="artisan-info">
+                <h1 id="artisan-name">Fatima Begum</h1>
+                <p id="artisan-title">Nakshi Kantha Specialist from Jessore</p>
+                <p id="artisan-description">Master of Nakshi Kantha embroidery with 30 years of experience. Fatima Begum is a skilled artisan from Jessore, Bangladesh, known for her intricate designs and traditional techniques. She has been practicing embroidery for over 30 years, inheriting the craft from her family. Her work reflects the rich cultural heritage of the region, featuring unique patterns and motifs.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Featured Products Section -->
+          <section class="featured-section">
+            <h2>Featured Products</h2>
+            <div class="featured-products-grid" id="artisan-products">
+              <!-- Products will be loaded here -->
+            </div>
+          </section>
+
+          <!-- About Section -->
+          <section class="about-section">
+            <h2>About Fatima</h2>
+            <p id="artisan-bio">Fatima Begum is a renowned Nakshi Kantha specialist from Jessore, Bangladesh, with over 30 years of experience in the craft. She learned embroidery from her family and has since mastered the art, creating exquisite pieces that reflect the rich cultural heritage of her region. Her work is characterized by intricate designs and traditional techniques, making each piece a unique work of art. Fatima's dedication to preserving and promoting traditional Nakshi Kantha has earned her recognition both locally and internationally.</p>
+          </section>
+
+          <!-- Reviews Section -->
+          <section class="reviews-section">
+            <h2>Reviews</h2>
+            <div class="reviews-list">
+              <div class="review-item">
+                <div class="review-header">
+                  <img src="assets/images/profile.jpg" alt="Fatima Khan" class="reviewer-avatar" />
+                  <div class="reviewer-info">
+                    <h4>Fatima Khan</h4>
+                    <span class="review-date">May 15, 2024</span>
+                  </div>
+                </div>
+                <div class="review-rating">★★★★★</div>
+                <p class="review-text">Fatima's Nakshi Kantha work is absolutely stunning! The craftsmanship is impeccable, and the designs are so unique and beautiful. I purchased a traditional quilt, and it has become a centerpiece in my living room. Highly recommend!</p>
+                <div class="review-actions">
+                  <span class="action-btn">👍 3</span>
+                  <span class="action-btn">💬</span>
+                </div>
+              </div>
+
+              <div class="review-item">
+                <div class="review-header">
+                  <img src="assets/images/male_avatar.jpg" alt="Arif Rahman" class="reviewer-avatar" />
+                  <div class="reviewer-info">
+                    <h4>Arif Rahman</h4>
+                    <span class="review-date">April 22, 2024</span>
+                  </div>
+                </div>
+                <div class="review-rating">★★★★☆</div>
+                <p class="review-text">I bought a Nakshi Kantha piece from Fatima, and it is lovely. The colors and patterns are vibrant, and they add a touch of elegance to my home. The only reason I'm not giving it 5 stars is that one small area had a minor imperfection, but overall, I'm very satisfied with my purchase.</p>
+                <div class="review-actions">
+                  <span class="action-btn">👍 1</span>
+                  <span class="action-btn">💬</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <nav class="footer-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+        <p class="footer-text">@2024 Crafts of Bengal. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+  function getQueryParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  function loadArtisan() {
+    const id = getQueryParam('id');
+    if (!id) {
+      // Load default artisan data (Fatima Begum - ID 1)
+      loadDefaultArtisan();
+      return;
+    }
+
+    fetch(`api/artisans.php?action=single&id=${id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.error || !data.success) {
+          console.error('Artisan API error:', data.error);
+          loadDefaultArtisan();
+          return;
+        }
+        displayArtisan(data.artisan);
+      })
+      .catch(error => {
+        console.error('Failed to load artisan:', error);
+        loadDefaultArtisan();
+      });
+  }
+
+  function loadDefaultArtisan() {
+    // Load Fatima Begum (ID 1) from the database
+    fetch('api/artisans.php?action=single&id=1')
+      .then(res => res.json())
+      .then(data => {
+        if (data.error || !data.success) {
+                     // Fallback to static data if database fails
+           const fallbackArtisan = {
+             name: "Fatima Begum",
+             specialization: "Nakshi Kantha",
+             location: "Jessore",
+             bio: "Master of Nakshi Kantha embroidery with 30 years of experience",
+             image: "assets/images/my_artisan_photo.jpg",
+            products: [
+              {
+                name: "Nakshi Kantha Quilt",
+                image: "assets/images/handicraft1.jpg"
+              }
+            ]
+          };
+          displayArtisan(fallbackArtisan);
+        } else {
+          displayArtisan(data.artisan);
+        }
+      })
+      .catch(() => {
+                 // Fallback to static data
+         const fallbackArtisan = {
+           name: "Fatima Begum",
+           specialization: "Nakshi Kantha",
+           location: "Jessore",
+           bio: "Master of Nakshi Kantha embroidery with 30 years of experience",
+           image: "assets/images/my_artisan_photo.jpg",
+          products: [
+            {
+              name: "Nakshi Kantha Quilt",
+              image: "assets/images/handicraft1.jpg"
+            }
+          ]
+        };
+        displayArtisan(fallbackArtisan);
+      });
+  }
+
+  function displayArtisan(artisan) {
+    const artisanImages = {
+      1: 'assets/images/artisan2.jpg', // Fatima
+      2: 'assets/images/artisan1.jpg', // Rahim
+      3: 'assets/images/artisan3.jpg', // Karim
+      4: 'assets/images/artisan4.jpg'  // Shahin
+    };
+    
+    // Use profile image from database or fallback to predefined images
+    const imgSrc = artisanImages[parseInt(artisan.id)] || artisan.profile_image || artisan.image || "assets/images/profile.jpg";
+    document.getElementById('artisan-image').src = imgSrc;
+    document.getElementById('artisan-image').alt = artisan.name;
+
+    // Update page title
+    document.title = `${artisan.name} | Crafts of Bengal`;
+
+    // Update ALL profile fields dynamically:
+    document.getElementById('artisan-name').textContent = artisan.name;
+    
+    const specialization = artisan.specialization || artisan.specialty || 'Artisan';
+    const title = specialization + (artisan.location ? ' from ' + artisan.location : '');
+    document.getElementById('artisan-title').textContent = title;
+    
+    const bio = artisan.bio || `${artisan.name} is a skilled artisan specializing in ${specialization}.`;
+    document.getElementById('artisan-description').textContent = bio;
+    document.getElementById('artisan-bio').textContent = bio;
+    
+    document.querySelector('.about-section h2').textContent = `About ${artisan.name.split(' ')[0]}`;
+
+    // Update products
+    const productsGrid = document.getElementById('artisan-products');
+    productsGrid.innerHTML = '';
+    if (artisan.products && artisan.products.length > 0) {
+      artisan.products.forEach(product => {
+        productsGrid.innerHTML += `
+          <div class="featured-product-card">
+            <img src="${product.image || 'assets/images/handicraft1.jpg'}" alt="${product.name}" />
+            <h3>${product.name}</h3>
+          </div>
+        `;
+      });
+    } else {
+      productsGrid.innerHTML = '<p>No products available at the moment.</p>';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadArtisan);
+  </script>
+</body>
+</html> 

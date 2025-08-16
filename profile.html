@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | Crafts of Bengal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+  <!-- JavaScript -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/auth-check.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/favorites.js" defer></script>
+  <script src="assets/js/profile.js" defer></script>
+</head>
+<body>
+  <div class="main-container">
+    <div class="page-card">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-title">
+          <div class="logo-icon"></div>
+          <h2 class="site-title">Crafts of Bengal</h2>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="handicrafts.html">Shop</a>
+          <a href="artisans.html">Artisans</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <form class="search-bar" action="handicrafts.html" method="get">
+            <input type="text" name="search" placeholder="Search" aria-label="Search for handicrafts, artisans, or categories" />
+            <button type="submit" aria-label="Search">
+              <span class="icon-search"></span>
+            </button>
+          </form>
+          <a href="favorites.html" class="icon-btn" aria-label="Favorites">
+            <span class="icon-heart"></span>
+          </a>
+          <a href="cart.html" class="icon-btn" aria-label="Cart"><span class="icon-cart"></span></a>
+        </div>
+        <a href="profile.html" class="profile-avatar-link"><img src="assets/images/profile.jpg" alt="Profile" class="profile-avatar" /></a>
+      </header>
+
+      <!-- Main Content -->
+      <main style="flex: 1; padding: 2rem;">
+        <div class="profile-container">
+          <h1 class="profile-title">My Profile</h1>
+          
+          <div class="profile-grid">
+            <!-- Profile Navigation -->
+            <div class="profile-nav">
+              <button class="nav-tab active" data-tab="account">Account Information</button>
+              <button class="nav-tab" data-tab="orders">Order History</button>
+              <button class="nav-tab" data-tab="addresses">Addresses</button>
+              <button class="nav-tab" data-tab="wishlist">Wishlist</button>
+              <button class="nav-tab" data-tab="settings">Settings</button>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+              <!-- Account Information Tab -->
+              <div class="tab-content active" id="account">
+                <h2 class="section-title">Account Information</h2>
+                <form class="profile-form" id="profileForm">
+                  <div class="profile-avatar-section">
+                    <img src="assets/images/profile.jpg" alt="Profile" class="large-avatar">
+                    <button type="button" class="change-avatar-btn">Change Photo</button>
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="firstName">First Name</label>
+                      <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+880 1712 345678">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="3" placeholder="Enter your full address"></textarea>
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="city">City</label>
+                      <input type="text" id="city" name="city" placeholder="e.g. Dhaka">
+                    </div>
+                    <div class="form-group">
+                      <label for="postalCode">Postal Code</label>
+                      <input type="text" id="postalCode" name="postalCode" placeholder="e.g. 1200">
+                    </div>
+                  </div>
+                  
+                  <button type="submit" class="save-button">Save Changes</button>
+                </form>
+              </div>
+
+              <!-- Order History Tab -->
+              <div class="tab-content" id="orders">
+                <h2 class="section-title">Order History</h2>
+                <div class="orders-list">
+                  <div class="order-card">
+                    <div class="order-header">
+                      <div class="order-info">
+                        <h3 class="order-number">Order #12345</h3>
+                        <p class="order-date">Placed on March 15, 2024</p>
+                      </div>
+                      <span class="order-status delivered">Delivered</span>
+                    </div>
+                    <div class="order-items">
+                      <div class="order-item">
+                        <img src="assets/images/handicraft1.jpg" alt="Nakshi Kantha" class="item-image">
+                        <div class="item-details">
+                          <h4 class="item-name">Nakshi Kantha Embroidery</h4>
+                          <p class="item-artisan">by Fatima's Embroidery</p>
+                          <p class="item-price">৳2,500</p>
+                        </div>
+                        <div class="item-quantity">Qty: 1</div>
+                      </div>
+                    </div>
+                    <div class="order-footer">
+                      <span class="order-total">Total: ৳2,650</span>
+                      <button class="track-order-btn">Track Order</button>
+                    </div>
+                  </div>
+                  
+                  <div class="order-card">
+                    <div class="order-header">
+                      <div class="order-info">
+                        <h3 class="order-number">Order #12344</h3>
+                        <p class="order-date">Placed on March 10, 2024</p>
+                      </div>
+                      <span class="order-status processing">Processing</span>
+                    </div>
+                    <div class="order-items">
+                      <div class="order-item">
+                        <img src="assets/images/handicraft3.jpg" alt="Terracotta Pottery" class="item-image">
+                        <div class="item-details">
+                          <h4 class="item-name">Terracotta Pottery Set</h4>
+                          <p class="item-artisan">by Rahim's Pottery</p>
+                          <p class="item-price">৳1,800</p>
+                        </div>
+                        <div class="item-quantity">Qty: 2</div>
+                      </div>
+                    </div>
+                    <div class="order-footer">
+                      <span class="order-total">Total: ৳3,750</span>
+                      <button class="track-order-btn">Track Order</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Addresses Tab -->
+              <div class="tab-content" id="addresses">
+                <h2 class="section-title">Shipping Addresses</h2>
+                <div class="addresses-list">
+                  <div class="address-card">
+                    <div class="address-header">
+                      <h3 class="address-name">Home Address</h3>
+                      <div class="address-actions">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                      </div>
+                    </div>
+                    <div class="address-details">
+                      <p>John Doe</p>
+                      <p>123 Main Street, Apartment 4B</p>
+                      <p>Dhaka, Dhaka Division 1200</p>
+                      <p>Bangladesh</p>
+                      <p>Phone: +880 1712 345678</p>
+                    </div>
+                    <span class="default-badge">Default</span>
+                  </div>
+                  
+                  <button class="add-address-btn">+ Add New Address</button>
+                </div>
+              </div>
+
+              <!-- Wishlist Tab -->
+              <div class="tab-content" id="wishlist">
+                <h2 class="section-title">My Wishlist</h2>
+                <div class="wishlist-grid">
+                  <div class="wishlist-item">
+                    <img src="assets/images/handicraft2.jpg" alt="Jamdani Weaving" class="item-image">
+                    <div class="item-info">
+                      <h3 class="item-name">Jamdani Weaving</h3>
+                      <p class="item-artisan">by Traditional Weavers</p>
+                      <p class="item-price">৳3,200</p>
+                    </div>
+                    <div class="item-actions">
+                      <button class="add-to-cart-btn">Add to Cart</button>
+                      <button class="remove-wishlist-btn">Remove</button>
+                    </div>
+                  </div>
+                  
+                  <div class="wishlist-item">
+                    <img src="assets/images/handicraft4.jpg" alt="Shital Pati Mats" class="item-image">
+                    <div class="item-info">
+                      <h3 class="item-name">Shital Pati Mats</h3>
+                      <p class="item-artisan">by Sylhet Craftsmen</p>
+                      <p class="item-price">৳1,500</p>
+                    </div>
+                    <div class="item-actions">
+                      <button class="add-to-cart-btn">Add to Cart</button>
+                      <button class="remove-wishlist-btn">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Settings Tab -->
+              <div class="tab-content" id="settings">
+                <h2 class="section-title">Account Settings</h2>
+                <div class="settings-section">
+                  <h3>Change Password</h3>
+                  <form class="password-form">
+                    <div class="form-group">
+                      <label for="currentPassword">Current Password</label>
+                      <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="newPassword">New Password</label>
+                      <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="confirmNewPassword">Confirm New Password</label>
+                      <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+                    </div>
+                    <button type="submit" class="save-button">Change Password</button>
+                  </form>
+                </div>
+                
+                <div class="settings-section">
+                  <h3>Notification Preferences</h3>
+                  <div class="notification-options">
+                    <label class="checkbox-label">
+                      <input type="checkbox" checked>
+                      <span class="checkmark"></span>
+                      Email notifications for orders
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" checked>
+                      <span class="checkmark"></span>
+                      Newsletter and promotions
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                      SMS notifications
+                    </label>
+                  </div>
+                  <button class="save-button">Save Preferences</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <nav class="footer-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+        <p class="footer-text">@2024 Crafts of Bengal. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html> 

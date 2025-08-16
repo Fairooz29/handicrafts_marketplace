@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorites | Crafts of Bengal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/auth-check.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/favorites.js" defer></script>
+</head>
+<body>
+  <div class="main-container">
+    <div class="page-card">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-title">
+          <div class="logo-icon"></div>
+          <h2 class="site-title">Crafts of Bengal</h2>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="handicrafts.html">Shop</a>
+          <a href="artisans.html">Artisans</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <form class="search-bar" action="handicrafts.html" method="get">
+            <input type="text" name="search" placeholder="Search" aria-label="Search for handicrafts, artisans, or categories" />
+            <button type="submit" aria-label="Search">
+              <span class="icon-search"></span>
+            </button>
+          </form>
+          <a href="favorites.html" class="icon-btn" aria-label="Favorites">
+            <span class="icon-heart"></span>
+          </a>
+          <a href="cart.html" class="icon-btn" aria-label="Cart"><span class="icon-cart"></span></a>
+        </div>
+
+      </header>
+
+      <!-- Main Content -->
+      <main style="flex: 1;">
+        <section style="max-width:1200px;margin:0 auto;padding:2rem 0;">
+          <!-- Breadcrumb -->
+          <nav style="font-size:0.98rem;color:#8a7c6d;margin-bottom:1.5rem;">
+            <a href="index.html" style="color:#8a7c6d;">Home</a> /
+            <span style="color:#181411;font-weight:500;">My Favorites</span>
+          </nav>
+
+          <div class="favorites-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+            <h1 class="section-title" style="margin:0;">My Favorites</h1>
+            <div class="favorites-count" style="color:#8a7c6d;font-size:1rem;">
+              <span id="favorites-total">0</span> items
+            </div>
+          </div>
+
+          <!-- Loading indicator -->
+          <div id="loading-indicator" style="text-align:center;padding:2rem;display:none;">
+            <div style="font-size:1.1rem;color:#8a7c6d;">Loading favorites...</div>
+          </div>
+
+          <!-- Favorites grid -->
+          <div class="favorites-grid" id="favorites-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;">
+            <!-- Favorites will be loaded dynamically -->
+          </div>
+
+          <!-- Empty favorites message -->
+          <div id="empty-favorites" style="text-align:center;padding:3rem;display:none;">
+            <div style="font-size:3rem;color:#ddd;margin-bottom:1rem;">♡</div>
+            <h3 style="color:#8a7c6d;margin-bottom:1rem;">No favorites yet</h3>
+            <p style="color:#999;margin-bottom:2rem;">Start adding products to your favorites to see them here.</p>
+            <a href="handicrafts.html" class="hero-button" style="display:inline-block;">Browse Products</a>
+          </div>
+
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <nav class="footer-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+        <div class="footer-social">
+          <a href="#"><span class="icon-twitter"></span></a>
+          <a href="#"><span class="icon-facebook"></span></a>
+          <a href="#"><span class="icon-instagram"></span></a>
+        </div>
+        <p class="footer-text">@2024 Crafts of Bengal. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize favorites page
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeFavoritesPage();
+    });
+
+    async function initializeFavoritesPage() {
+      const loadingIndicator = document.getElementById('loading-indicator');
+      const favoritesGrid = document.getElementById('favorites-grid');
+      const emptyFavorites = document.getElementById('empty-favorites');
+      const favoritesTotal = document.getElementById('favorites-total');
+
+      // Check if user is logged in
+      const isLoggedIn = localStorage.getItem('is_logged_in') === 'true';
+      
+      if (!isLoggedIn) {
+        loadingIndicator.style.display = 'none';
+        emptyFavorites.innerHTML = `
+          <div style="font-size:3rem;color:#ddd;margin-bottom:1rem;">🔒</div>
+          <h3 style="color:#8a7c6d;margin-bottom:1rem;">Please login to view favorites</h3>
+          <a href="login.html?redirect=favorites.html" class="hero-button" style="display:inline-block;">Login</a>
+        `;
+        emptyFavorites.style.display = 'block';
+        favoritesGrid.style.display = 'none';
+        return;
+      }
+
+      // Show loading
+      loadingIndicator.style.display = 'block';
+      favoritesGrid.style.display = 'none';
+      emptyFavorites.style.display = 'none';
+      
+      try {
+        const response = await fetch('api/favorites.php?action=all');
+        
+        if (!response.ok) {
+          if (response.status === 401) {
+            loadingIndicator.style.display = 'none';
+            emptyFavorites.innerHTML = `
+              <div style="font-size:3rem;color:#ddd;margin-bottom:1rem;">🔒</div>
+              <h3 style="color:#8a7c6d;margin-bottom:1rem;">Please login to view favorites</h3>
+              <a href="login.html?redirect=favorites.html" class="hero-button" style="display:inline-block;">Login</a>
+            `;
+            emptyFavorites.style.display = 'block';
+            return;
+          }
+          throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        loadingIndicator.style.display = 'none';
+
+        if (data.success) {
+          const favorites = data.data.favorites;
+          
+          if (favorites.length === 0) {
+            emptyFavorites.style.display = 'block';
+            favoritesGrid.style.display = 'none';
+          } else {
+            displayFavorites(favorites);
+            favoritesTotal.textContent = favorites.length;
+            favoritesGrid.style.display = 'grid';
+          }
+        } else {
+          throw new Error(data.message || 'Failed to load favorites');
+        }
+      } catch (error) {
+        console.error('Error loading favorites:', error);
+        loadingIndicator.style.display = 'none';
+        emptyFavorites.innerHTML = `
+          <h3 style="color:#e74c3c;margin-bottom:1rem;">Error loading favorites</h3>
+          <p style="color:#999;">Please try again later.</p>
+        `;
+        emptyFavorites.style.display = 'block';
+      }
+    }
+
+    function displayFavorites(favorites) {
+      const favoritesGrid = document.getElementById('favorites-grid');
+      
+      favoritesGrid.innerHTML = favorites.map(favorite => `
+        <div class="product-card favorite-item" data-product-id="${favorite.id}">
+          <div class="product-image-container">
+            <img src="${favorite.image}" alt="${favorite.name}" class="product-image" />
+            <button class="favorite-btn active" data-product-id="${favorite.id}" aria-label="Remove from favorites">
+              <span class="icon-heart"></span>
+            </button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">${favorite.name}</h3>
+            <p class="product-description">${favorite.short_description}</p>
+            <div class="product-meta">
+              <span class="artisan-name">by ${favorite.artisan_name || 'Unknown Artisan'}</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">৳${parseFloat(favorite.price).toLocaleString()}</span>
+              ${favorite.original_price > favorite.price ? 
+                `<span class="original-price">৳${parseFloat(favorite.original_price).toLocaleString()}</span>
+                 <span class="discount">${Math.round(((favorite.original_price - favorite.price) / favorite.original_price) * 100)}% OFF</span>` : ''
+              }
+            </div>
+            <div style="margin-top:1rem;">
+              <button class="hero-button add-to-cart-btn" data-product-id="${favorite.id}" style="width:100%;padding:0.75rem;">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Bind events
+      bindFavoritesEvents();
+    }
+
+    function bindFavoritesEvents() {
+      // Product card click events
+      const productCards = document.querySelectorAll('.favorite-item');
+      productCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (!e.target.closest('.favorite-btn') && !e.target.closest('.add-to-cart-btn')) {
+            const productId = this.dataset.productId;
+            window.location.href = `product.html?id=${productId}`;
+          }
+        });
+      });
+
+      // Favorite button events
+      const favoriteButtons = document.querySelectorAll('.favorite-btn');
+      favoriteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          removeFavorite(this.dataset.productId, this.closest('.favorite-item'));
+        });
+      });
+
+      // Add to cart button events
+      const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const productId = this.dataset.productId;
+          HandicraftsCart.addToCart(productId);
+        });
+      });
+    }
+
+    async function removeFavorite(productId, cardElement) {
+      try {
+        const result = await HandicraftsFavorites.toggleFavorite(productId);
+        
+        if (result) {
+          // Remove card with animation
+          cardElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          cardElement.style.opacity = '0';
+          cardElement.style.transform = 'scale(0.8)';
+          
+          setTimeout(() => {
+            cardElement.remove();
+            
+            // Update count
+            const favoritesTotal = document.getElementById('favorites-total');
+            const currentCount = parseInt(favoritesTotal.textContent) - 1;
+            favoritesTotal.textContent = currentCount;
+            
+            // Show empty state if no more favorites
+            const remainingCards = document.querySelectorAll('.favorite-item');
+            if (remainingCards.length === 0) {
+              document.getElementById('empty-favorites').style.display = 'block';
+              document.getElementById('favorites-grid').style.display = 'none';
+            }
+          }, 300);
+        }
+      } catch (error) {
+        console.error('Error removing favorite:', error);
+        HandicraftsFavorites.showNotification('Error removing from favorites', 'error');
+      }
+    }
+  </script>
+</body>
+</html>
+
+
