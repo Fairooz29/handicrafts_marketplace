@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Crafts of Bengal</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+</head>
+<body>
+  <div class="main-container">
+    <div class="page-card">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-title">
+          <div class="logo-icon"></div>
+          <h2 class="site-title">Crafts of Bengal</h2>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="handicrafts.html">Shop</a>
+          <a href="artisans.html">Artisans</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <form class="search-bar" action="handicrafts.html" method="get">
+            <input type="text" name="search" placeholder="Search" aria-label="Search for handicrafts, artisans, or categories" />
+            <button type="submit" aria-label="Search">
+              <span class="icon-search"></span>
+            </button>
+          </form>
+          <a href="favorites.html" class="icon-btn" aria-label="Favorites">
+            <span class="icon-heart"></span>
+          </a>
+          <a href="cart.html" class="icon-btn" aria-label="Cart">
+            <span class="icon-cart"></span>
+          </a>
+        </div>
+
+      </header>
+
+      <!-- Main Content -->
+      <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+        <div class="auth-container">
+          <div class="auth-card">
+            <h1 class="auth-title">Welcome Back</h1>
+            <p class="auth-subtitle">Sign in to your account to continue shopping</p>
+            
+            <form class="auth-form" id="loginForm">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+              </div>
+              
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+              </div>
+              
+              <div class="form-options">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="remember">
+                  <span class="checkmark"></span>
+                  Remember me
+                </label>
+                <a href="forgot-password.html" class="forgot-link">Forgot Password?</a>
+              </div>
+              
+              <button type="submit" class="auth-button">Sign In</button>
+            </form>
+            
+
+            
+            <p class="auth-footer">
+              Don't have an account? <a href="register.html">Sign up here</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <nav class="footer-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+        <p class="footer-text">@2024 Crafts of Bengal. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html> 
