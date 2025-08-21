@@ -1,2 +1,0 @@
-# handicrafts_marketplace
-
