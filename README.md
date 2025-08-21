@@ -78,7 +78,7 @@ handicrafts_marketplace/
 
 Watch our system demonstration to see the Handicrafts Marketplace in action:
 
-📺 **[Watch Demo Video](https://drive.google.com/file/d/11pKN12SXqNZT0h47-_3ayMiJ8NPMaROv/view?usp=sharing)**
+📺 **[Watch Demo Video](https://drive.google.com/file/d/15DtsbjgHG3TsW4T-A3Ms3ysN7Lf4mwtj/view?usp=sharing)**
 
 The demo showcases:
 - User registration and authentication
