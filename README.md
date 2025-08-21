@@ -2,6 +2,8 @@
 
 A comprehensive e-commerce platform for traditional handicrafts, built with PHP, MySQL, and modern web technologies. This system connects artisans with customers, showcasing authentic handcrafted products from Bangladesh and West Bengal.
 
+📺 **[Watch Demo Video](https://drive.google.com/file/d/15DtsbjgHG3TsW4T-A3Ms3ysN7Lf4mwtj/view?usp=sharing)**
+
 ## 🌟 Features
 
 ### Customer Features
